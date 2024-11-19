@@ -30,4 +30,5 @@ def delete_expense(request,id):
         Expenses = Expenses.objects.all()
         serializer = ExpenseSerializer(Expenses,many=True)
         return Response(serializer.data)
+#one comment for push check
 
