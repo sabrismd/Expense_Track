@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import json as js
 import os
-env = js.load(open(os.path.join(os.getcwd(),'config/config.json')))
+env = js.load(open('config/config.json'))
 env = env['environment']
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
