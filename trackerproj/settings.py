@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import json as js
 import os
-env = js.load(open('config/config.json'))
+env = js.load(open(os.path.join(os.getcwd(),'config/config.json')))
 env = env['environment']
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-m7*4fzejibwo6dp)y_5#(&datufopl^d%-*3z=*i*$2mriv2pg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -92,11 +92,13 @@ else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'arunkumar22$expense_tracker',
+        'NAME': 'arunkumar22$tracker',
         'USER':'arunkumar22',
         'PASSWORD':'S@bri2019',
         'HOST':'arunkumar22.mysql.pythonanywhere-services.com',
-        'PORT':'3306',
+        'OPTIONS':{
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            }
     }
 }
 
