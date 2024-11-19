@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+import json as js
+import os
+env = js.load(open('config/config.json'))
+env = env['environment']
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -74,15 +77,26 @@ WSGI_APPLICATION = 'trackerproj.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-DATABASES = {
+if env=='dev':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'expense_tracker',
+            'USER':'root',
+            'PASSWORD':'S@bri2019',
+            'HOST':'localhost',
+            'PORT':'3305',
+        }
+    }
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'expense_tracker',
-        'USER':'root',
+        'NAME': 'arunkumar22$expense_tracker',
+        'USER':'arunkumar22',
         'PASSWORD':'S@bri2019',
-        'HOST':'localhost',
-        'PORT':'3305',
+        'HOST':'arunkumar22.mysql.pythonanywhere-services.com',
+        'PORT':'3306',
     }
 }
 
