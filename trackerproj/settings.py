@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import json as js
 import os
-env = js.load(open('config/config.json'))
-env = env['environment']
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,7 +75,7 @@ WSGI_APPLICATION = 'trackerproj.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-if env=='dev':
+if not 'arunkumar22' in os.getcwd():
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
